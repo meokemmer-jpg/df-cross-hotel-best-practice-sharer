@@ -1,0 +1,110 @@
+df_id: df-cross-hotel-best-practice-sharer
+df_name: Cross-Hotel Best-Practice-Sharer
+welle_introduced: welle-47
+type: foundation-df
+crux-mk: true
+k0_touch: false
+q0_touch: false
+phronesis_required: false
+
+# K11 Cascade-Containment
+cascade_isolation: hard
+failure_blast_radius: 1
+
+# K12 Distillation-Resistenz
+output_feeds_into_training: false
+provenance_required_in_output: true
+non_llm_validation_layer: true
+
+# K13 Independent-Ground-Truth
+external_anchor_type: drive_filesystem
+external_anchor_validation_frequency: daily
+pre_action_domain_check: true
+pre_action_backup_check: true
+pre_action_blast_radius_check: true
+
+# K14 Human-Override-Decay
+override_complexity: single_command
+override_documentation_freshness_days: 30
+martin_review_cadence: weekly
+bus_factor_handover_drilled: false
+
+# K15 Entropy-Budget
+entropy_added_loc_estimate: 600
+entropy_added_concepts:
+  - BestPracticeRepository
+  - BayesianKnowledgeTransfer
+  - PatternAdaptationProposer
+entropy_justified_by_rho: 0.05
+entropy_subtractive_potential: true
+
+# K16 Concurrent-Spawn-Mutex
+concurrent_spawn_protection: both
+lock_dir: /tmp/df-cross-hotel-best-practice-sharer.lock
+lock_stale_age_h: 6
+engine_pgrep_check: true
+lock_release_on: EXIT_INT_TERM
+
+# Lose-Coupling LC1-LC5
+lose_coupling:
+  LC1_graceful_degradation:
+    degradation_modes:
+      - full
+      - degraded_no_real_hotels
+      - sandbox_mock
+    degradation_test_required: true
+  LC2_direct_mode:
+    direct_mode_available: true
+    direct_mode_capability: 0.7
+    direct_mode_trigger: "real-hotels unreachable >30s"
+  LC3_circuit_breaker:
+    circuit_breaker_timeout_s: 30
+    circuit_breaker_open_threshold: 3
+    circuit_breaker_half_open_test_interval_s: 300
+  LC4_failure_isolation:
+    state_externalization: true
+    idempotent_operations: true
+    dependency_dlq_separate: true
+  LC5_health_check:
+    health_check_dependencies: []
+    health_check_degraded_score: 0.7
+    health_check_endpoint_or_file: state/health.json
+
+# ENV-Var-Gated-Real-Integration-Default
+env_vars:
+  DF_CROSS_HOTEL_REAL_ENABLED: false
+  PHRONESIS_TICKET: ""
+
+# Mock-Patterns (Sandbox-Default)
+mock_patterns:
+  - pattern_id: bp-hildesheim-checkin-flow
+    source_tenant: hildesheim
+    kpi_improvement: 0.18
+    confidence: 0.85
+  - pattern_id: bp-hildesheim-upsell-script
+    source_tenant: hildesheim
+    kpi_improvement: 0.12
+    confidence: 0.72
+  - pattern_id: bp-munich-housekeeping-route
+    source_tenant: munich
+    kpi_improvement: 0.09
+    confidence: 0.68
+
+# Mock-Hotels (Target-Adaption-Kandidaten)
+mock_hotels:
+  - tenant_id: hildesheim
+    name: HeyLou Hildesheim
+    region: DE
+  - tenant_id: cape-coral
+    name: HeyLou Cape Coral
+    region: US
+  - tenant_id: munich
+    name: HeyLou Munich
+    region: DE
+
+# Scheduling
+schedule:
+  type: launchagent
+  cadence: hourly
+  RunAtLoad: true
+  StartInterval: 3600
