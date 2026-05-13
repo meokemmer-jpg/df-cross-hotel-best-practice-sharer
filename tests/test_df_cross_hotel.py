@@ -172,3 +172,22 @@ def test_mock_data_consistency() -> None:
     # Alle source_tenants existieren in targets-Liste
     for bp in patterns:
         assert bp.source_tenant in targets
+
+
+# ============================================================
+# W49-D K12+K13 Migration Tests
+# ============================================================
+
+def test_w49d_k12_envelope_and_k13_anchor(tmp_path: Path) -> None:
+    """K12 envelope + K13 RFC3161-anchor are produced by run_once."""
+    audit_path = tmp_path / "audit.jsonl"
+    run_once(audit_path, tmp_path / "patterns.json")
+    from src.adapter_orchestrator import W49D_FOUNDATION
+    if W49D_FOUNDATION:
+        prov_dir = tmp_path / "provenance-full"
+        assert prov_dir.exists()
+        envs = list(prov_dir.glob("*.envelope.json"))
+        assert len(envs) >= 1, "K12 envelope must be persisted"
+        anchors = tmp_path / "anchors" / "rfc3161-anchors.jsonl"
+        assert anchors.exists()
+        assert anchors.read_text().strip(), "K13 anchor file must contain at least one record"

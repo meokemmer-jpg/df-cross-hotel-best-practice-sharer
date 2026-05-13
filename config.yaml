@@ -11,14 +11,18 @@ phronesis_required: false
 cascade_isolation: hard
 failure_blast_radius: 1
 
-# K12 Distillation-Resistenz
+# K12 Distillation-Resistenz (W49-D upgrade)
 output_feeds_into_training: false
 provenance_required_in_output: true
 non_llm_validation_layer: true
+envelope_schema: full_provenance_envelope_v1.0   # W49-D K12 (HMAC + chain-predecessor)
+hmac_secret_env_var: DF_CROSS_HOTEL_HMAC_SECRET
+envelope_ttl_seconds: 86400
 
-# K13 Independent-Ground-Truth
-external_anchor_type: drive_filesystem
-external_anchor_validation_frequency: daily
+# K13 Independent-Ground-Truth (W49-D upgrade: rfc3161)
+external_anchor_type: rfc3161                    # W49-D K13 (was: drive_filesystem)
+external_anchor_provider: freetsa
+external_anchor_validation_frequency: per_run
 pre_action_domain_check: true
 pre_action_backup_check: true
 pre_action_blast_radius_check: true
@@ -38,12 +42,13 @@ entropy_added_concepts:
 entropy_justified_by_rho: 0.05
 entropy_subtractive_potential: true
 
-# K16 Concurrent-Spawn-Mutex
+# K16 Concurrent-Spawn-Mutex (W49-D AtomicLock-reference)
 concurrent_spawn_protection: both
 lock_dir: /tmp/df-cross-hotel-best-practice-sharer.lock
 lock_stale_age_h: 6
 engine_pgrep_check: true
 lock_release_on: EXIT_INT_TERM
+lock_implementation: atomic_lock                 # W49-D K16
 
 # Lose-Coupling LC1-LC5
 lose_coupling:
