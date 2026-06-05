@@ -8,3 +8,11 @@ audit.jsonl
 .env
 .venv/
 STOP.flag
+*.env
+*.db
+*.sqlite
+*.sqlite3
+*.key
+*.pem
+secrets.json
+credentials.json
