@@ -1,0 +1,12 @@
+{
+  "df": "df-cross-hotel-best-practice-sharer",
+  "ts": "2026-06-08T19:56:09.332134+00:00",
+  "has_src": true,
+  "parse_ok": true,
+  "has_tests": true,
+  "test_ran": true,
+  "tests_passed": true,
+  "code_hash": "4482f5485ef93fa0",
+  "python": "3.14.4",
+  "crux": "[CRUX-MK]"
+}
