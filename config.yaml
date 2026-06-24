@@ -109,3 +109,12 @@ commit_conditions:
 - K12
 - K13
 - K16
+
+# --- K11-16 Board-Haertung (evidence-based, df_k_hardening) [CRUX-MK] ---
+K11_cascade_containment: isolated_run  # evidence: df_foundation.isolated_run (echte Failure-Isolation)
+K14_human_override_decay: foundation_override  # evidence: df_foundation.run_guarded (STOP.flag-Override)
+K15_entropy_budget: foundation_budget  # evidence: df_foundation.run_guarded (Tages-Lauf-Budget)
+K16_concurrent_spawn_mutex: foundation_mutex  # evidence: df_foundation.spawn_mutex (atomarer Lock)
+K_hardening_gap: [distillation_resistance, independent_ground_truth]  # echte Luecke -> Code noetig
+K_hardening_level: declared  # 4/6 evidenz-belegt
+K_hardening_ts: 2026-06-23T05:28:42.120337+00:00

@@ -174,5 +174,9 @@ def main() -> int:
     return 0 if success else 1
 
 
-if __name__ == "__main__":
-    sys.exit(main())
+if __name__ == "__main__":  # K16+K11-FOUNDATION-WIRED [CRUX-MK]
+    try:
+        from _df_common.df_foundation import run_guarded as _rg
+    except Exception:
+        raise SystemExit(main())   # Foundation nicht erreichbar -> normal (nie brechen)
+    raise SystemExit(_rg("df-cross-hotel-best-practice-sharer", main))   # K14+K16+K15+K11 echt
