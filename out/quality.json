@@ -1,9 +1,9 @@
 {
   "df": "df-cross-hotel-best-practice-sharer",
-  "ts": "2026-07-10T01:05:17.044140+00:00",
+  "ts": "2026-07-10T02:58:11.977673+00:00",
   "maturity": "TESTED",
   "maturity_level": 4,
   "evidence_grade": 4,
-  "wargame_verdict": null,
+  "wargame_verdict": "CONDITIONAL",
   "crux": "[CRUX-MK]"
 }
